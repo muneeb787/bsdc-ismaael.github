@@ -1,4 +1,4 @@
-const stripe = require('stripe')('sk_test_51QOgcwAWI44r05bCmg1tOcbblz7VGA1uI2zEmpD72f3LInenzFAbG3cqFaVaBkOsZ4CDyMAGwb8OkXvbBg4mdGM700QiLRjNOf'); // Stripe secret key
+const stripe = require('stripe')('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'); // Stripe secret key
 const cors = require('cors');
 const bodyParser = require('body-parser');  // Add body-parser
 const nodemailer = require('nodemailer'); // Add nodemailer for sending emails
@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
     // Handle the Stripe webhook for payment success
     else if (req.method === 'POST' && req.url === '/api/webhook') {  // Ensure route for webhook
       const sig = req.headers['stripe-signature'];
-      const endpointSecret = 'whsec_IWIIEPRwAwU8aoIDJdEue0VF7OkAz1Gq';  // Your webhook secret key from Stripe
+      const endpointSecret = 'whsec_g1oqSTYR8LqXQ4dV4XURmVDDVQ5e3J1P';  // Your webhook secret key from Stripe
       const event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
 
       if (event.type === 'payment_intent.succeeded') {
