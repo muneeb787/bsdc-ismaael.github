@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
     // Handle the Stripe webhook for payment success
     else if (req.method === 'POST' && req.url === '/api/webhook') {  // Ensure route for webhook
       const sig = req.headers['stripe-signature'];
-      const endpointSecret = 'whsec_test_key';  // Your webhook secret key from Stripe
+      const endpointSecret = 'whsec_IWIIEPRwAwU8aoIDJdEue0VF7OkAz1Gq';  // Your webhook secret key from Stripe
       const event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
 
       if (event.type === 'payment_intent.succeeded') {
