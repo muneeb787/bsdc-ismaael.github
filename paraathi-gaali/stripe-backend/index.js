@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
   // Apply CORS to all routes
   cors(corsOptions)(req, res, async () => {
     // Handle the Stripe checkout session creation
-    if (req.method === 'POST' && req.url === '/create-checkout-session') {
+    if (req.method === 'POST' && req.url === '/api/create-checkout-session') { // Make sure route matches /api/*
       try {
         const { items } = req.body; // Get items from the frontend cart
 
@@ -47,9 +47,9 @@ module.exports = async (req, res) => {
       }
     }
     // Handle the Stripe webhook for payment success
-    else if (req.method === 'POST' && req.url === '/webhook') {
+    else if (req.method === 'POST' && req.url === '/api/webhook') {  // Ensure route for webhook
       const sig = req.headers['stripe-signature'];
-      const endpointSecret = 'whsec_test_key';  // Hardcode your webhook secret key for testing
+      const endpointSecret = 'whsec_test_key';  // Your webhook secret key from Stripe
       const event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
 
       if (event.type === 'payment_intent.succeeded') {
