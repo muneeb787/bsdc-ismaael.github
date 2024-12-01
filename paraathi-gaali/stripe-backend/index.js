@@ -1,9 +1,5 @@
 const stripe = require('stripe')('sk_test_51QOgcwAWI44r05bCmg1tOcbblz7VGA1uI2zEmpD72f3LInenzFAbG3cqFaVaBkOsZ4CDyMAGwb8OkXvbBg4mdGM700QiLRjNOf'); // Stripe secret key
 const cors = require('cors');
-const bodyParser = require('body-parser');  // Import body-parser
-
-// Add body-parser to parse JSON in incoming requests
-app.use(bodyParser.json());  // This will parse the incoming request body as JSON
 
 module.exports = async (req, res) => {
   // Enable CORS with the frontend URL
