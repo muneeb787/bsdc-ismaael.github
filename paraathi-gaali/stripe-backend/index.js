@@ -4,7 +4,7 @@ const cors = require('cors');
 module.exports = async (req, res) => {
   // Enable CORS with the frontend URL
   const corsOptions = {
-    origin: 'https://frontend-qwi2oohjo-ismaaels-projects.vercel.app', // your frontend deployed URL
+    origin: '*', // your frontend deployed URL
     methods: ['GET', 'POST'], // Allow these methods
     allowedHeaders: ['Content-Type'], // Allow these headers
   };

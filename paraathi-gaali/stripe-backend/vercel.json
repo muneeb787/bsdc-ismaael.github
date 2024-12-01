@@ -1,28 +1,9 @@
 {
   "version": 2,
   "builds": [
-    {
-      "src": "index.js",
-      "use": "@vercel/node"
-    }
+    { "src": "index.js", "use": "@vercel/node" }
   ],
-  "headers": [
-    {
-      "source": "/create-checkout-session",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "https://frontend-91xreq181-ismaaels-projects.vercel.app/"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "GET, POST, OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type"
-        }
-      ]
-    }
+  "routes": [
+    { "src": "/api/(.*)", "dest": "index.js" }
   ]
 }

@@ -136,7 +136,7 @@ async function createCheckoutSession() {
     }
 
     try {
-        const response = await fetch('https://stripe-backend-q2d1zai0r-ismaaels-projects.vercel.app/create-checkout-session', { // Updated Backend URL
+        const response = await fetch('https://bsdc-ismaael-github-io.vercel.app/api/create-checkout-session', { // Updated Backend URL
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
