@@ -32,8 +32,8 @@ module.exports = async (req, res) => {
           payment_method_types: ['card'],
           line_items: lineItems,
           mode: 'payment',
-          success_url: 'https://front-end-beta-tawny.vercel.app//success.html',
-          cancel_url: 'https://front-end-beta-tawny.vercel.app//cancel.html',
+          success_url: 'https://front-end-beta-tawny.vercel.app/success.html',
+          cancel_url: 'https://front-end-beta-tawny.vercel.app/cancel.html',
         });
 
         // Send the session ID to the frontend
