@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
   // Apply CORS to all routes
   cors(corsOptions)(req, res, async () => {
     // Handle the Stripe checkout session creation
-    if (req.method === 'POST') { // Make sure route matches /api/*
+    if (req.method === 'POST' && req.url === '/api/create-checkout-session') { // Make sure route matches /api/*
       try {
         const { items } = req.body; // Get items from the frontend cart
 
