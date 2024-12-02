@@ -9,7 +9,9 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     fetch(form.action, {
         method: 'POST',
         body: formData,
+        mode: 'no-cors' // Add this line to handle CORS
     })
+    
     .then(response => {
         if (response.ok) {
             // If the form is successfully submitted, show the success message
@@ -21,8 +23,10 @@ document.getElementById('contact-form').addEventListener('submit', function(even
                 document.getElementById('success-message').style.display = 'none';
             }, 3000);
         } else {
-            // If there is an issue with the form submission, show an alert
-            alert("Something went wrong. Please try again.");
+            // If there is an issue with the form submission, show an alert with error message
+            return response.json().then(errorData => {
+                alert(`Error: ${errorData.errors[0].message}`);
+            });
         }
     })
     .catch(error => {
