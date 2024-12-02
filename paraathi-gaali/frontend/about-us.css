@@ -1,0 +1,139 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('images/background2.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #FFEB3B;
+    line-height: 1.6;
+    padding-top: 100px; /* Adjusted top padding to prevent overlap with fixed header */
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #800020; /* Red background color from the logo */
+    padding: 20px 20px;
+    z-index: 1000;
+    box-shadow: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Logo */
+header .logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Navigation */
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: #FFEB3B; /* Yellow color for the navigation links */
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #ff7043;
+    transform: scale(1.1);
+}
+
+/* About Us Section */
+#about-us {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: rgba(182, 22, 22, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+#about-us h3 {
+    font-size: 2rem;
+    color: #FFEB3B;
+    margin-bottom: 20px;
+    font-weight: bold;
+    animation: slideInLeft 1s ease-out;
+}
+
+#about-us p {
+    font-size: 1.1rem;
+    color: #FFEB3B;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    animation: fadeInUp 2s ease-out;
+}
+
+.opening-hours {
+    background-color: #800020;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeInUp 2s ease-out;
+}
+
+.opening-hours h4 {
+    font-size: 1.5rem;
+    color: #FFEB3B;
+    margin-bottom: 10px;
+}
+
+.opening-hours ul {
+    list-style: none;
+    font-size: 1.1rem;
+    color: #FFEB3B;
+    padding: 0;
+}
+
+.opening-hours ul li {
+    margin: 5px 0;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
