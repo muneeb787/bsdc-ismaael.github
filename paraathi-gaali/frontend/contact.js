@@ -9,9 +9,10 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     fetch(form.action, {
         method: 'POST',
         body: formData,
-        mode: 'no-cors' // Add this line to handle CORS
+        headers: {
+            'Accept': 'application/json', // Ensures we handle the response correctly
+        },
     })
-    
     .then(response => {
         if (response.ok) {
             // If the form is successfully submitted, show the success message
