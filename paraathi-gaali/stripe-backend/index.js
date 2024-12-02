@@ -1,4 +1,4 @@
-const stripe = require('stripe')('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'); // Stripe secret key
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // Use the secret key from the .env file
 const cors = require('cors');
 const bodyParser = require('body-parser');  // Add body-parser
 const nodemailer = require('nodemailer'); // Add nodemailer for sending emails
@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
     // Handle the Stripe webhook for payment success
     else if (req.method === 'POST' && req.url === '/api/webhook') {  // Ensure route for webhook
       const sig = req.headers['stripe-signature'];
-      const endpointSecret = 'whsec_g1oqSTYR8LqXQ4dV4XURmVDDVQ5e3J1P';  // Your webhook secret key from Stripe
+      const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET;  // Use the webhook secret from the .env file
       const event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
 
       if (event.type === 'payment_intent.succeeded') {
@@ -59,13 +59,13 @@ module.exports = async (req, res) => {
         const transporter = nodemailer.createTransport({
           service: 'gmail',
           auth: {
-            user: 'ismaaelbaig2003@gmail.com', // Your email
-            pass: 'loljokes123',   // Your email password (or app-specific password)
+            user: process.env.EMAIL_USER,  // Use environment variable for your email
+            pass: process.env.EMAIL_PASSWORD,   // Use environment variable for your email password
           },
         });
 
         const mailOptions = {
-          from: 'ismaaelbaig2003@gmail.com', // Sender address
+          from: process.env.EMAIL_USER, // Sender address
           to: paymentIntent.receipt_email, // Customer's email
           subject: 'Payment Successful - Order Confirmation',
           text: `Your payment of £${(paymentIntent.amount_received / 100).toFixed(2)} was successful! Thank you for your purchase.`,
